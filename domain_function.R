@@ -1,4 +1,4 @@
-domain <- function(input){ #defining domain-function 
+domain <- function(input, verbose=TRUE){ #defining domain-function 
 
     #create toplevel-domain list 
     library(plyr)
@@ -31,13 +31,14 @@ domain <- function(input){ #defining domain-function
     #input <- levels(as.factor(input))
 
 #initialize progress bar 
-    print("Identifying domains")
-    pb <- txtProgressBar(min=0,max=length(input),style=3)
-    pbi=0
+    if(verbose){
+        print("Identifying domains")
+        pb <- txtProgressBar(min=0,max=length(input),style=3)
+        pbi=0}
 
     for(i in input){
-        pbi <- pbi+1
-        setTxtProgressBar(pb,pbi) #progress bar 
+        if(verbose){pbi <- pbi+1
+        setTxtProgressBar(pb,pbi)} #progress bar 
 
 #identify topleveldomain
         splitted <- strsplit(i,split="/") #split between slashes 
@@ -70,7 +71,13 @@ domain <- function(input){ #defining domain-function
             domain <- paste(dotsplit[[1]][length(dotsplit[[1]])-1],tlds$clean[tld],sep="")
             results <- c(results,domain)
             next
+        }
 
+        if(!is.null(suffixed)){
+            if(domain %in% suffixed & !is.na(splitted[[1]][2])){
+            domain <- paste(domain, splitted[[1]][2], sep="/")
+        results <- c(results,domain)
+            }
         }
         domain <- NA #if steps haven't been succesful domain is declared NA 
         results <- c(results,domain)
@@ -79,6 +86,6 @@ domain <- function(input){ #defining domain-function
     }
     results<-gsub("^[.]","",results) #if added tlds do not have sub. for examlpe: plus.google.com would result in .plus.google.com without this step  
     #results <- results[indices]
-    cat("\n\n")
+    if(verbose){cat("\n\n")}
     return(results)
 }

@@ -1,4 +1,4 @@
-frss_apikey <- readLines("frss_apikey.txt") #to be specified
+frss_apikey <- readLines("resources/frss_apikey.txt") #to be specifid
 
 maintext <- function(inputURL, host="http://frss.schloegl.net/",parsed=TRUE){
     library(XML)

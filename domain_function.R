@@ -3,7 +3,7 @@ domain <- function(input, verbose=TRUE){ #defining domain-function
     #create toplevel-domain list 
     library(plyr)
 #read files
-    tld <- read.table(file="C:/Users/stephan.schloegl/Dropbox/r_functions/tlds.txt", header = FALSE, col.names=FALSE,as.is = TRUE,comment.char = "/", stringsAsFactors = FALSE)
+    tld <- read.table(file="C:/Users/stephan.schloegl/Dropbox/r_functions/resources/tlds.txt", header = FALSE, col.names=FALSE,as.is = TRUE,comment.char = "/", stringsAsFactors = FALSE)
     #tld <- read.table(file="tlds.txt", header = FALSE, sep = "", quote = "\"'",dec = ".",  col.names=FALSE,as.is = TRUE,na.strings = "NA", colClasses = NA, nrows = -1,skip = 0, check.names = TRUE, strip.white = FALSE, fill=FALSE,blank.lines.skip = TRUE,comment.char = "/",allowEscapes = FALSE, flush = FALSE, stringsAsFactors = FALSE,fileEncoding = "UTF-8", encoding = "UTF-8")
     #load(file="C:/Users/stephan.schloegl/Dropbox/r_functions/tlds.text")
 

@@ -1,4 +1,4 @@
-yahoo_apikey <- readLines("yahoo_apikey.txt") #to be specified 
+yahoo_apikey <- readLines("resources/yahoo_apikey.txt") #to be specified 
 
 
 placemaker <- function(input){
